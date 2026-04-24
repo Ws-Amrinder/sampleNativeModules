@@ -1,7 +1,6 @@
-import { useRoute } from '@react-navigation/native';
-import React from 'react';
+import { RouteProp, useRoute } from '@react-navigation/native';
+import React, { useEffect } from 'react';
 import { View, Text } from 'react-native';
-import NotFound from './NotFound';
 
 const data = [
   { id: 1, name: 'Product 1' },
@@ -16,21 +15,33 @@ const data = [
   { id: 10, name: 'Product 10' },
 ];
 
+// const ProductScreen1 = () => {
+//   const route = useRoute<RouteProp<{ Product: { id: number } }, 'Product'>>();
+//   // product name
+//   const {id} = route.params;
+//   const productName = data.find(d => d.id === Number(id))?.name;
+
+//   return (
+//     <View>
+//       <Text style={{ fontSize: 20, color: 'green' }}>This is the product ---- {productName}</Text>
+//     </View>
+//   );
+// };
+
 const ProductScreen = () => {
-  // product name
-  const route = useRoute();
-  const { id } = (route.params as { id: number }) ?? { id: 1 };
-  const productName = data.find(d => d.id === Number(id))?.name;
-  if (!productName) {
-    return <NotFound />;
-  }
+    const route = useRoute();
+    const { id } = route.params; // Extract the `id` from the route parameters
+  
+    useEffect(() => {
+      // Optionally load data or perform actions based on `id`
+      console.log('Product ID:', id);
+    }, [id]);
+  
+    return (
+      <View>
+        <Text>Product Details for ID: {id}</Text>
+      </View>
+    );
+  };
 
-  return (
-    <View>
-      <Text>This is the Product Screen</Text>
-      <Text>{productName} - product</Text>
-    </View>
-  );
-};
-
-export default ProductScreen;
+export default ProductScreen

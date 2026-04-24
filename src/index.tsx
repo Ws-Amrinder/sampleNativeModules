@@ -12,7 +12,7 @@ enableScreens();
 const Tab = createBottomTabNavigator();
 
 const Navigation = () => {
-  const linking = {
+  const linking:any = {
     prefixes: [
       'sampleNativeModules://',
       //   'https://sampleNativeModules.com', // sample URL
@@ -21,7 +21,13 @@ const Navigation = () => {
     config: {
       screens: {
         Home: 'home',
-        Products: 'products/:id',
+        Products: {
+          path: 'products',
+          screens: {
+            ProductList: '',
+            Product: 'product/:id',
+          },
+        },
         Settings: 'settings',
         NotFound: '*',
       },
