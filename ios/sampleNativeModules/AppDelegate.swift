@@ -2,9 +2,6 @@ import UIKit
 import React
 import React_RCTAppDelegate
 import ReactAppDependencyProvider
-import ReactCore
-import ReactNavigation
-import Linking
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -35,19 +32,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     return true
   }
 
-  // This method is called when a Universal Link is clicked
-  func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([UIUserActivityRestoring]?) -> Void) -> Bool {
-    // Handle the Universal Link
-    if let url = userActivity.webpageURL {
-      Linking.openURL(url) // This will trigger React Native's Linking module
+  func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
+    return RCTLinkingManager.application(app, open: url, options: options)
+  }
+  
+  func application(
+    _ application: UIApplication,
+    continue userActivity: NSUserActivity,
+    restorationHandler: @escaping ([UIUserActivityRestoring]?) -> Void) -> Bool {
+      return RCTLinkingManager.application(
+        application,
+        continue: userActivity,
+        restorationHandler: restorationHandler
+      )
     }
-    return true
-  }
-
-  // Optionally override other app lifecycle methods
-  func application(_ application: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
-    return Linking.application(application, open: url, options: options)
-  }
 }
 
 class ReactNativeDelegate: RCTDefaultReactNativeFactoryDelegate {
