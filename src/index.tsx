@@ -5,6 +5,8 @@ import React from 'react';
 import Home from './Home';
 import Products from './Products';
 import Settings from './Settings';
+import AffirmationsScreen from './screens/AffirmationsScreen';
+import { Linking } from 'react-native';
 
 // for bett
 enableScreens();
@@ -12,6 +14,7 @@ enableScreens();
 const Tab = createBottomTabNavigator();
 
 const Navigation = () => {
+
   const linking: any = {
     prefixes: [
       'sampleNativeModules://',
@@ -24,25 +27,29 @@ const Navigation = () => {
           path: 'home',
           screens: {
             HomeMain: '',
-            NotFound: '*',
           },
         },
+        Affirmations: 'affirmations/:id',
         Products: {
           path: 'products',
           screens: {
             Products: '',
             Product: ':id',
-            NotFound: '*',
           },
         },
         Settings: {
           path: 'settings',
           screens: {
             Settings: '',
-            NotFound: '*',
           },
         },
       },
+    },
+    async getInitialURL() {
+      const url = await Linking.getInitialURL();
+      if (url != null) {
+        return url;
+      }
     },
   };
 
@@ -51,6 +58,7 @@ const Navigation = () => {
       <Tab.Navigator screenOptions={{ headerShown: false }}>
         <Tab.Screen name="Home" component={Home} />
         <Tab.Screen name="Products" component={Products} />
+        <Tab.Screen name="Affirmations" component={AffirmationsScreen} />
         <Tab.Screen name="Settings" component={Settings} />
       </Tab.Navigator>
     </NavigationContainer>
