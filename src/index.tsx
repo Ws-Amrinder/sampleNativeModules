@@ -1,7 +1,7 @@
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { enableScreens } from 'react-native-screens';
-import React, { useEffect } from 'react';
+import React from 'react';
 import Home from './Home';
 import Products from './Products';
 import Settings from './Settings';
@@ -27,25 +27,20 @@ const Navigation = () => {
           path: 'home',
           screens: {
             HomeMain: '',
-            NotFound: '*',
           },
         },
-        Affirmations: {
-          path: 'affirmations/:id',
-        },
+        Affirmations: 'affirmations/:id',
         Products: {
           path: 'products',
           screens: {
             Products: '',
             Product: ':id',
-            NotFound: '*',
           },
         },
         Settings: {
           path: 'settings',
           screens: {
             Settings: '',
-            NotFound: '*',
           },
         },
       },
