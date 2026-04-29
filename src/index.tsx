@@ -21,42 +21,33 @@ const Navigation = () => {
       //   'https://sampleNativeModules.com', // sample URL
       'https://anne-untippled-dispiritedly.ngrok-free.dev', // ngrok url - in actual implementation, this will be the URL of the app eg. https://sunshineclub.com
     ],
-    // config: {
-    //   screens: {
-    //     Home: {
-    //       path: 'home',
-    //       screens: {
-    //         HomeMain: '',
-    //         NotFound: '*',
-    //       },
-    //     },
-    //     Affirmations: {
-    //       path: 'affirmations/:id',
-    //     },
-    //     Products: {
-    //       path: 'products',
-    //       screens: {
-    //         Products: '',
-    //         Product: ':id',
-    //         NotFound: '*',
-    //       },
-    //     },
-    //     Settings: {
-    //       path: 'settings',
-    //       screens: {
-    //         Settings: '',
-    //         NotFound: '*',
-    //       },
-    //     },
-    //   },
-    // },
     config: {
       screens: {
-        Home: 'home',
-        Products: 'products/:id',
-        Settings: 'settings',
-        NotFound: '*',
-        Affirmations: 'affirmations/:id',
+        Home: {
+          path: 'home',
+          screens: {
+            HomeMain: '',
+            NotFound: '*',
+          },
+        },
+        Affirmations: {
+          path: 'affirmations/:id',
+        },
+        Products: {
+          path: 'products',
+          screens: {
+            Products: '',
+            Product: ':id',
+            NotFound: '*',
+          },
+        },
+        Settings: {
+          path: 'settings',
+          screens: {
+            Settings: '',
+            NotFound: '*',
+          },
+        },
       },
     },
     async getInitialURL() {
