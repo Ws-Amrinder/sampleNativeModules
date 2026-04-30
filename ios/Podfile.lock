@@ -1362,6 +1362,30 @@ PODS:
     - React-RCTFBReactNativeSpec
     - ReactCommon/turbomodule/core
     - ReactNativeDependencies
+  - react-native-config (1.6.1):
+    - react-native-config/App (= 1.6.1)
+  - react-native-config/App (1.6.1):
+    - hermes-engine
+    - RCTRequired
+    - RCTTypeSafety
+    - React-Core
+    - React-Core-prebuilt
+    - React-debug
+    - React-Fabric
+    - React-featureflags
+    - React-graphics
+    - React-ImageManager
+    - React-jsi
+    - React-NativeModulesApple
+    - React-RCTFabric
+    - React-renderercss
+    - React-rendererdebug
+    - React-utils
+    - ReactCodegen
+    - ReactCommon/turbomodule/bridging
+    - ReactCommon/turbomodule/core
+    - ReactNativeDependencies
+    - Yoga
   - react-native-safe-area-context (5.7.0):
     - hermes-engine
     - RCTRequired
@@ -2162,6 +2186,7 @@ DEPENDENCIES:
   - React-logger (from `../node_modules/react-native/ReactCommon/logger`)
   - React-Mapbuffer (from `../node_modules/react-native/ReactCommon`)
   - React-microtasksnativemodule (from `../node_modules/react-native/ReactCommon/react/nativemodule/microtasks`)
+  - react-native-config (from `../node_modules/react-native-config`)
   - react-native-safe-area-context (from `../node_modules/react-native-safe-area-context`)
   - react-native-video (from `../node_modules/react-native-video`)
   - React-NativeModulesApple (from `../node_modules/react-native/ReactCommon/react/nativemodule/core/platform/ios`)
@@ -2283,6 +2308,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon"
   React-microtasksnativemodule:
     :path: "../node_modules/react-native/ReactCommon/react/nativemodule/microtasks"
+  react-native-config:
+    :path: "../node_modules/react-native-config"
   react-native-safe-area-context:
     :path: "../node_modules/react-native-safe-area-context"
   react-native-video:
@@ -2407,6 +2434,7 @@ SPEC CHECKSUMS:
   React-logger: 4e7583fb51ef2aa76b298c88e1b9a5cff83e03f7
   React-Mapbuffer: 820bc13d35de93c05aacefb3ab43f061b247c64e
   React-microtasksnativemodule: d8115c4d1035b8671c036a47d82fe75d1ca44e44
+  react-native-config: 6188f674e4f4b3bdfd43c22886fb04f3103793ff
   react-native-safe-area-context: 6b4966397ada0f7dd481e4486a2ef936834861a1
   react-native-video: 82fc4acb1b62f7fd8b3c0e6b88b691510bd92ab3
   React-NativeModulesApple: 647d3ab78e02b3a40fedffd856744215219ff0a6
@@ -2450,6 +2478,6 @@ SPEC CHECKSUMS:
   RNWorklets: dd3b2cb0750090d78d85cd3b3ec0fdbeab5ce118
   Yoga: b1085f68c014785350a2afdc95eaef0d49f23ccb
 
-PODFILE CHECKSUM: b765e78e84e66df9be81f98a7de242ab90e84ddd
+PODFILE CHECKSUM: 8cef283a7f00eae54b9c720f91f4f29def4ea1a3
 
 COCOAPODS: 1.16.2
