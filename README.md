@@ -3,6 +3,7 @@ Document for understanding deep links
 https://docs.google.com/document/d/1e_nWu4_ERsc218JwGY84jiFu_mvfBcwtgzcM5MoIMlU/edit?tab=t.0#heading=h.s4603c7g7mc5
 
 references - 
+https://www.youtube.com/watch?v=PeSYh36_cZE
 https://kaumadiechamalka100.medium.com/how-to-implement-universal-link-app-link-in-react-native-a33eb6532612
 https://reactnavigation.org/docs/deep-linking/#setting-up-deep-links
 https://www.youtube.com/watch?v=PeSYh36_cZE

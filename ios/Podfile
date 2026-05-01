@@ -20,8 +20,14 @@ if linkage != nil
   use_frameworks! :linkage => linkage.to_sym
 end
 
-target 'sampleNativeModules' do
+abstract_target 'sampleNativeModulesCommonPods' do
   config = use_native_modules!
+
+  target 'sampleNativeModules Dev' do
+  end
+  
+  target 'sampleNativeModules Prod' do
+  end
 
   use_react_native!(
     :path => config[:reactNativePath],
@@ -38,3 +44,4 @@ target 'sampleNativeModules' do
     )
   end
 end
+

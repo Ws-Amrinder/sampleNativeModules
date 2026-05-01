@@ -2,6 +2,14 @@ apply plugin: "com.android.application"
 apply plugin: "org.jetbrains.kotlin.android"
 apply plugin: "com.facebook.react"
 
+project.ext.envConfigFiles = [
+    devdebug: ".env.dev",
+    devrelease: ".env.dev",
+    proddebug:'.env.prod',
+    prodrelease:'.env.prod',
+]
+apply from: project(':react-native-config').projectDir.getPath() + "/dotenv.gradle"
+
 /**
  * This is the configuration block to customize your React Native Android app.
  * By default you don't need to apply any configuration, just uncomment the lines you need.
@@ -84,7 +92,21 @@ android {
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
         versionName "1.0"
+        resValue 'string', 'build_config_package', 'com.samplenativemodules'
     }
+
+    flavorDimensions 'env'
+    productFlavors {
+        dev {
+            dimension 'env'
+            applicationIdSuffix ".dev"
+        }
+        prod {
+            dimension 'env'
+            applicationIdSuffix ".prod"
+        }
+    }
+
     signingConfigs {
         debug {
             storeFile file('debug.keystore')
@@ -94,7 +116,7 @@ android {
         }
         release {
             storeFile file('sampleNativeModules.keystore')
-            storePassword 'spero2024'
+            storePassword project.env.get("STORE_PASSWORD") //'spero2024'
             keyAlias 'my_key_alias'
             keyPassword 'spero2024'
         }
@@ -104,8 +126,7 @@ android {
             signingConfig signingConfigs.debug
         }
         release {
-            // Caution! In production, you need to generate your own keystore file.
-            // see https://reactnative.dev/docs/signed-apk-android.
+            // proguard rules are applied in release build for handling obfuscation of the code
             signingConfig signingConfigs.debug
             minifyEnabled enableProguardInReleaseBuilds
             proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
@@ -116,6 +137,7 @@ android {
 dependencies {
     // The version of react-native is set by the React Native Gradle Plugin
     implementation("com.facebook.react:react-android")
+    implementation project(':react-native-config')
 
     if (hermesEnabled.toBoolean()) {
         implementation("com.facebook.react:hermes-android")
